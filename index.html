@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Simulação NF-e | RPA Test</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .container { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 400px; text-align: center; }
+        h2 { color: #2c3e50; margin-bottom: 1.5rem; }
+        input { width: 100%; padding: 10px; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; background-color: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        button:hover { background-color: #2980b9; }
+        #resultado { margin-top: 1.5rem; display: none; text-align: left; border-top: 2px solid #eee; padding-top: 1rem; }
+        .status { font-weight: bold; color: #27ae60; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Consulta de NF-e</h2>
+        <input type="text" id="chaveAcesso" placeholder="Digite a Chave de Acesso (44 dígitos)">
+        <button onclick="consultar()">Consultar Nota</button>
+
+        <div id="resultado">
+            <p><strong>Status:</strong> <span class="status" id="resStatus">AUTORIZADA</span></p>
+            <p><strong>Emitente:</strong> <span id="resEmitente">RPA Solutions LTDA</span></p>
+            <p><strong>Valor Total:</strong> R$ <span id="resValor">1.250,00</span></p>
+            <p><strong>Data:</strong> 14/01/2026</p>
+        </div>
+    </div>
+
+    <script>
+        function consultar() {
+            const chave = document.getElementById('chaveAcesso').value;
+            if (chave.length > 5) {
+                document.getElementById('resultado').style.display = 'block';
+                // Simulação de valores diferentes baseados na chave para o robô ler
+                document.getElementById('resValor').innerText = (Math.random() * 2000).toFixed(2);
+            } else {
+                alert('Por favor, digite uma chave válida para teste.');
+            }
+        }
+    </script>
+</body>
+</html>
